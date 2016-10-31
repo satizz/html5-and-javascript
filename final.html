@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="#">
+
+    <title>Interview Task</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="styles/mystyle.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="http://getbootstrap.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      
+      
+      <!-- custom css file for this site -->
+    <link rel="stylesheet" href="styles/leaflet.css" />
+    <link rel="stylesheet" href="styles/font-awesome.min.css" />
+    <link href='styles/mapbox.css' rel='stylesheet' />
+    <link href='styles/normalize.css' rel='stylesheet' />
+    <link rel="stylesheet" href="scripts/jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+<style type="text/css">
+    body{
+        background-image: url(images/background.jpg);
+        background-repeat: no-repeat;
+    }
+       #circleBar-web-text,
+#circleBar-mobile-text{
+    
+    font-size:16px;
+    fill:#000;
+}
+#circleBar-web-labels tspan,
+#circleBar-mobile-labels tspan {
+    
+    font-size:10px;
+    fill:#6D6E71;
+}
+
+#circleBar-web-values tspan,
+#circleBar-mobile-values tspan {
+    
+    font-size: 9px;
+    font-weight:bold;
+    fill:#000;
+}
+#circleBar-web-values tspan {
+    fill: #7D3A4D;
+}
+#circleBar-mobile-values tspan {
+    fill: #684E88;
+}
+
+.land {
+  fill: #ddd;
+}
+
+.states,
+.hexagons path {
+  stroke: #fff;
+}
+        .chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+.progress {
+	width:300px;
+    height: 12px;
+}
+.ui-tooltip, .arrow:after {
+    background: black;
+    border: 2px solid white;
+  }
+  .ui-tooltip {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font: bold 14px "Helvetica Neue", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+  }
+
+        #icons{
+            background-image: url(images/line.png);
+            background-size: 400px 50px;
+            background-repeat: no-repeat;
+        }
+        .fa-stack {
+	        float:left;
+            padding-top: 5px;
+            padding-right: 25px;
+            color:rebeccapurple;
+            font-size: 12px;
+        }
+        svg {
+    position:relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+path {
+  stroke: white;
+  stroke-width: 0.25px;
+  fill: grey;
+}
+        
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+
+      <div class="page-header">
+        <h1>ZHEJIANG ECONOMIC DEVELOPMENT AND GROWTH RATE</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-3"><p style="font-size:15px; color:white;height:relative;text-align:justify;">Zhejiang's main manufacturing sectors are electromechanical industries, textiles, chemical industries, food, and construction materials. In recent years Zhejiang has followed its own development model, dubbed the "Zhejiang model", which is based on prioritizing and encouraging entrepreneurship, an emphasis on small businesses responsive to the whims of the market, large public investments into infrastructure, and the production of low-cost goods in bulk for both domestic consumption and export. </p><br/><br/>
+            <hr/>
+          <!-- progress bar  -->
+            <div class="progress" >
+  <div class="progress bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%" data-toggle="popover" data-placement="top" data-content="laoreet rutrum faucibus.">
+    
+  </div>
+</div>
+<div class="progress">
+  <div class="progress bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%" data-toggle="popover" data-placement="top" data-content="lacus vel augue ">
+    
+  </div>
+</div>
+<div class="progress">
+  <div class="progress bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis ">
+  </div>
+</div>
+          </div>
+        <div class="col-md-6">
+            <div id="map" style="width:580px;height:490px;"></div>
+          </div>
+        <div class="col-md-3"><div id="wrapper">
+                <canvas id="myChart" width="300px" height="300px"></canvas>
+        <div id="world-map" style="width:300px; height: 200px"></div>        
+        </div></div>
+        </div>     
+        <div class="row">
+        <div class="col-md-3">.col-md-4</div>
+        <div class="col-md-3 icons">
+            <span  class="fa-stack fa-lg" style="font-size:25px;">
+                <i class="fa fa-stack-2x fa-circle" aria-hidden="true"></i>
+  <i class="fa fa-cog fa-stack-1x fa-inverse"></i>
+</span>
+        <span class="fa-stack fa-lg" style="font-size:25px;">
+            <i class="fa fa-stack-2x fa-circle" aria-hidden="true"></i>
+            <i class="fa fa-lightbulb-o fa-stack-1x fa-inverse"  ></i>
+            
+            </span>
+            <span class="fa-stack fa-lg" style="font-size:25px;">
+            <i class="fa fa-stack-2x fa-circle" aria-hidden="true"></i>
+            <i class="fa fa-star fa-stack-1x fa-inverse "  ></i>
+            
+            </span>
+            <span class="fa-stack fa-lg" style="font-size:25px;">
+            <i class="fa fa-stack-2x fa-circle " aria-hidden="true"></i>
+            <i class="fa fa-puzzle-piece fa-stack-1x fa-inverse"  ></i>
+            
+            </span>
+            <span class="fa-stack fa-lg" style="font-size:25px;">
+            <i class="fa fa-stack-2x fa-circle" aria-hidden="true"></i>
+            <i class="fa fa-rocket fa-stack-1x fa-inverse"  ></i>
+            
+            </span>
+        </div></div>
+        <div class="col-md-3">.col-md-4</div>
+        <div class="col-md-3">.col-md-4</div>
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="radical/lib/jquery-2.1.1.min.js"></script>
+    <script src="scripts/leaflet.js"></script>
+    <script src='scripts/mapbox.js'></script>
+    <script src="scripts/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="scripts/jquery-jvectormap-world-mill.js"></script>
+    <script src="radical/radialprogress/lib/d3.min.js"></script>
+    <script src="scripts/chart.min.js"></script>
+      <script src="scripts/myscript.js" type="text/javascript"></script>
+      <script src="styles/bootstrap/js/bootstrap.min.js" type="text/javascript" ></script>
+    <!--script src="scripts/fontawesome
+.js"></script-->
+  </body>
+</html>
